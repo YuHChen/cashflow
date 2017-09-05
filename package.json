@@ -1,0 +1,58 @@
+{
+  "name": "cashflow",
+  "version": "1.0.0",
+  "description": "Stay on top of your finances with cashflow",
+  "main": "main.js",
+  "devDependencies": {
+    "electron": "1.7.5",
+    "electron-builder": "^19.27.3"
+  },
+  "build": {
+    "appId": "me.cashflow.app",
+    "productName": "Cashflow",
+    "asar": true,
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "files": ["**/*", "assets"],
+    "linux": {
+      "executableName": "cashflow",
+      "category": "Office",
+      "target": "AppImage",
+      "icon": "build"
+    },
+    "mac": {
+      "category": "public.app-category.finance",
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "deleteAppDataOnUninstall": true,
+      "createDesktopShortcut": false
+    }
+  },
+  "scripts": {
+    "start": "electron main.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -lw",
+    "dist-linux": "electron-builder -l",
+    "dist-win": "electron-builder -w",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuHChen/cashflow.git"
+  },
+  "author": "Yu Heng Chen",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/YuHChen/cashflow/issues"
+  },
+  "homepage": "https://github.com/YuHChen/cashflow#readme"
+}
